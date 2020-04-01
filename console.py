@@ -43,19 +43,24 @@ class HBNBCommand(cmd.Cmd):
                 raise SyntaxError()
             my_list = line.split(" ")
             for i in range(my_list):
-                if my_list[0] == "=" or my_list[-1] == "=" or "=" not in my_list[i]:
-                   pass
+                if my_list[0] == "=" or my_list[-1] == "=" \
+                                     or "=" not in my_list[i]:
+                    pass
                 else:
                     for count in range(len(my_list[i])):
-                        if my_list[i][count] == "==" and my_list [i][count + 1] == "\"" and my_list[i][-1] == "\"":
-                           index = my_list[i].split("=")
-                           st = index[1][1:-1]
-                           st = st.replace('"', '\\"')
-                           st = st.replace("_", " ")
-                           lib.update({index[0]: st})
-                        elif my_list[i][count] == "=" and (type(eval(my_list[i + 1:])) is int or type (eval(my_list[i+1:])) is float):
-                             index = my_list[i].split("=")
-                             lib.update({index[0]: eval(index[1])})
+                        if my_list[i][count] == "==" \
+                                     and my_list[i][count + 1] == "\"" \
+                                     and my_list[i][-1] == "\"":
+                            index = my_list[i].split("=")
+                            st = index[1][1:-1]
+                            st = st.replace('"', '\\"')
+                            st = st.replace("_", " ")
+                            lib.update({index[0]: st})
+                        elif my_list[i][count] == "=" \
+                                     and (type(eval(my_list[i + 1:])) is int \
+                                     or type (eval(my_list[i+1:])) is float):
+                              index = my_list[i].split("=")
+                              lib.update({index[0]: eval(index[1])})
             obj = eval("{}()".format(my_list[0]))
             obj.__dict__.update(lib)
             obj.save()
