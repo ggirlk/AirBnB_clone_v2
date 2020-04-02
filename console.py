@@ -58,8 +58,8 @@ class HBNBCommand(cmd.Cmd):
                             j = j.replace("_", " ")
                             dic.update({c[0]: j})
                         elif list[count] == "=" and \
-                            (type(eval(list[count+1:])) is int
-                             or type(eval(list[count+1:])) is float):
+                            (type(eval(list[count+1:])) is int) or \
+                            (type(eval(list[count+1:])) is float):
                             c = my_list[i].split("=")
                             lib.update({c[0]: eval(c[1])})
                         count = count + 1
