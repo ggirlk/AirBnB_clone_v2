@@ -57,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         """ arg parser return dict """
         d = {}
         for ar in args:
-            key = ar.split("=")
+            key = ar.split("=", 1)
             d.update({key[0]: key[1]})
         return d
 
