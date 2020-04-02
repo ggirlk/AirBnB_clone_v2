@@ -65,6 +65,8 @@ class HBNBCommand(cmd.Cmd):
                     v = float(key[1])
                 except:
                     v = key[1].replace("_", " ")
+                    v = "\\".join( v[i:i + 2] \
+                                 for i in range(0, len(v), 2))
             d.update({key[0]: v})
         return d
 
