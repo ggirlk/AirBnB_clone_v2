@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
                     pass
                 else:
                     for count in range(len(my_list[i])):
-                        if my_list[i][count] == "==" \
+                        if my_list[i][count] == "=" \
                                      and my_list[i][count + 1] == "\"" \
                                      and my_list[i][-1] == "\"":
                             index = my_list[i].split("=")
