@@ -45,12 +45,21 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             if ar[0] in myModels:
-                obj = myModels[ar[0]]()
+                d = self.parseArgs(ar[1:])
+                obj = myModels[ar[0]](d)
                 print(obj.id)
                 obj.save()
             else:
                 print("** class doesn't exist **")
                 return
+
+    def parseArgs(self, args):
+        """ arg parser return dict """
+        d = {}
+        for ar in args:
+            key = ar.split("=")
+            d.update({key[0]: key[1]})
+        return d
 
     def do_show(self, line):
         """Prints the string representation of an instance
