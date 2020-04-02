@@ -38,29 +38,29 @@ class HBNBCommand(cmd.Cmd):
             SyntaxError: when there is no args given
             NameError: when there is no object taht has the name
         """
-        try:
+              try:
             if not line:
                 raise SyntaxError()
             my_list = line.split(" ")
             lib = {}
             for i in range(0, len(my_list)):
-                if my_list[0] == "=" or my_list[-1] == "=" \
-                                     or "=" not in my_list[i]:
+                list = my_list[i]
+                if list[0] == "=" or "=" not in list or list[-1] == "=":
                     pass
                 else:
-                    for count in range(len(my_list[i])):
-                        if my_list[i][count] == "=" \
-                                     and my_list[i][count + 1] == "\"" \
-                                     and my_list[i][-1] == "\"":
-                            index = my_list[i].split("=")
-                            st = index[1][1:-1]
-                            st = st.replace('"', '\\"')
-                            st = st.replace("_", " ")
-                            lib.update({index[0]: st})
-                        elif my_list[i][count] == "=" and type(eval(my_list[i + 1:])) is int or\
-                                 type(eval(my_list[i+1:])) is float:
-                            index = my_list[i].split("=")
-                            lib.update({index[0]: eval(index[1])})
+                    count = 0
+                    z = 0
+                    while count < len(list):
+                        if list[count] == "=" and list[-1] == "\"" and list[count+1] == "\"":
+                            c = my_list[i].split("=")
+                            s = c[1][1:-1]
+                            s = s.replace('"', '\\"')
+                            s = s.replace("_", " ")
+                            dic.update({c[0]: s})
+                        elif list[count] == "=" and (type(eval(list[count+1:])) is int or type(eval(list[count+1:])) is float):
+                            c= my_list[i].split("=")
+                            lib.update({c[0]: eval(c[1])})
+                        count += 1
             obj = eval("{}()".format(my_list[0]))
             obj.__dict__.update(lib)
             obj.save()
