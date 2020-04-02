@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
                 try:
                     v = float(key[1])
                 except:
-                    continue
+                    v = key[1].replace("_", " ")
             d.update({key[0]: v})
         return d
 
