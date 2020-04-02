@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                                or type(eval(list[count+1:])) is float):
                             c= my_list[i].split("=")
                             lib.update({c[0]: eval(c[1])})
-                        count += 1
+                        count = count + 1
             obj = eval("{}()".format(my_list[0]))
             obj.__dict__.update(lib)
             obj.save()
