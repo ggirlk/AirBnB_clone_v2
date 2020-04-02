@@ -1,3 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
@@ -12,7 +29,7 @@ from models.place import Place
 from models.review import Review
 from shlex import split
 
-myModels = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 class HBNBCommand(cmd.Cmd):
@@ -34,23 +51,24 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program at end of file"""
         return True
 
-    def do_create(self, arg):
+    def do_create(self, line):
         """Creates a new instance of BaseModel, saves it
         Exceptions:
             SyntaxError: when there is no args given
             NameError: when there is no object taht has the name
         """
-        ar = split(arg)
-        if not arg:
+        args = arg.split()
+        if len(args) == 0:
             print("** class name missing **")
+            return False
+        if args[0] in classes:
+            new_dict = self._key_value_parser(args[1:])
+            instance = classes[args[0]](**new_dict)
         else:
-            if ar[0] in myModels:
-                obj = myModels[ar[0]]()
-                print(obj.id)
-                obj.save()
-            else:
-                print("** class doesn't exist **")
-                return
+            print("** class doesn't exist **")
+            return False
+        print(instance.id)
+        instance.save()
 
     def do_show(self, line):
         """Prints the string representation of an instance
