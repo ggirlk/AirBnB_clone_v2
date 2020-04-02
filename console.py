@@ -58,16 +58,13 @@ class HBNBCommand(cmd.Cmd):
         d = {}
         for ar in args:
             key = ar.split("=", 1)
-            if key[1][0] == key[1][-1] == '"':
-                v = key[1].replace("_", " ") 
-            else:
+            try:
+                v = int(key[1])
+            except:
                 try:
-                    v = int(key[1])
+                    v = float(key[1])
                 except:
-                    try:
-                        v = float(key[1])
-                    except:
-                        continue;
+                    continue
             d.update({key[0]: v})
         return d
 
