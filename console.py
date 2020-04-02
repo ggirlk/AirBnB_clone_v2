@@ -50,13 +50,16 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     count = 0
                     while count < len(list):
-                        if list[count] == "=" and list[-1] == "\"" and list[count+1] == "\"":
+                        if list[count] == "=" and list[-1] == "\"" \
+                                               and list[count+1] == "\"":
                             c = my_list[i].split("=")
                             j = c[1][1:-1]
                             j = j.replace('"', '\\"')
                             j = j.replace("_", " ")
                             dic.update({c[0]: j})
-                        elif list[count] == "=" and (type(eval(list[count+1:])) is int or type(eval(list[count+1:])) is float):
+                        elif list[count] == "=" and \
+                              (type(eval(list[count+1:])) is int \
+                               or type(eval(list[count+1:])) is float):
                             c= my_list[i].split("=")
                             lib.update({c[0]: eval(c[1])})
                         count += 1
