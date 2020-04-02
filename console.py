@@ -56,11 +56,10 @@ class HBNBCommand(cmd.Cmd):
                             st = st.replace('"', '\\"')
                             st = st.replace("_", " ")
                             lib.update({index[0]: st})
-                        elif my_list[i][count] == "=" \
-                                     and (type(eval(my_list[i + 1:])) is int \
-                                     or type (eval(my_list[i+1:])) is float):
-                              index = my_list[i].split("=")
-                              lib.update({index[0]: eval(index[1])})
+                        elif my_list[i][count] == "=" and type(eval(my_list[i + 1:])) is int or\
+                                 type(eval(my_list[i+1:])) is float:
+                            index = my_list[i].split("=")
+                            lib.update({index[0]: eval(index[1])})
             obj = eval("{}()".format(my_list[0]))
             obj.__dict__.update(lib)
             obj.save()
