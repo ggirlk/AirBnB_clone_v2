@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
             SyntaxError: when there is no args given
             NameError: when there is no object taht has the name
         """
-              try:
+        try:
             if not line:
                 raise SyntaxError()
             my_list = line.split(" ")
@@ -49,14 +49,13 @@ class HBNBCommand(cmd.Cmd):
                     pass
                 else:
                     count = 0
-                    z = 0
                     while count < len(list):
                         if list[count] == "=" and list[-1] == "\"" and list[count+1] == "\"":
                             c = my_list[i].split("=")
-                            s = c[1][1:-1]
-                            s = s.replace('"', '\\"')
-                            s = s.replace("_", " ")
-                            dic.update({c[0]: s})
+                            j = c[1][1:-1]
+                            j = j.replace('"', '\\"')
+                            j = j.replace("_", " ")
+                            dic.update({c[0]: j})
                         elif list[count] == "=" and (type(eval(list[count+1:])) is int or type(eval(list[count+1:])) is float):
                             c= my_list[i].split("=")
                             lib.update({c[0]: eval(c[1])})
