@@ -42,6 +42,7 @@ class HBNBCommand(cmd.Cmd):
             if not line:
                 raise SyntaxError()
             my_list = line.split(" ")
+            lib = {}
             for i in range(my_list):
                 if my_list[0] == "=" or my_list[-1] == "=" \
                                      or "=" not in my_list[i]:
