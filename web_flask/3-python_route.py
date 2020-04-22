@@ -25,7 +25,7 @@ def c():
 @app.route('/python/<text>', strict_slashes=False)
 def python():
     str = escape(text)
-    str.replace(' ', '_')
+    str = str.replace(' ', '_')
     return 'Python %s' % escape(str)
 
 if __name__ == "__main__":
