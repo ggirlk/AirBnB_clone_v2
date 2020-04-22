@@ -2,7 +2,7 @@
 """ Hello Flask """
 
 
-from flask import Flask
+from flask import Flask, escape
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def c():
-    return 'C %s' % text
+    return 'C %s' % escape(text)
 
 
 if __name__ == "__main__":
