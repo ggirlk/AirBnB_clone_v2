@@ -18,12 +18,12 @@ def hbnb():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c():
+def c(text):
     return 'C %s' % escape(text)
 
 
 @app.route('/python/<text>', strict_slashes=False)
-def python():
+def python(text):
     if not text:
         text = "is cool"
     str = escape(text)
