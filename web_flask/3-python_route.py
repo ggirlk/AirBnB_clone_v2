@@ -26,7 +26,7 @@ def c():
 def python():
     str = escape(text)
     str = str.replace(' ', '_')
-    return 'Python %s' % escape(str)
+    return 'Python %s' % str
 
 if __name__ == "__main__":
     app.run()
