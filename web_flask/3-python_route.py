@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """ Hello Flask """
 
@@ -22,10 +23,8 @@ def c(text):
     return 'C {}'.format(text.replace('_', ' '))
 
 
-@app.route('/python/<text>', strict_slashes=False)
-def python(text):
-    if not text:
-        text = "is cool"
+@app.route('/python/(<text>)', strict_slashes=False)
+def python(text="is cool"):
     return 'Python {}'.format(text.replace('_', ' '))
 
 if __name__ == "__main__":
