@@ -32,9 +32,9 @@ def python(text="is cool"):
 def nbr(n):
     try:
         int(n)
-        return "n is a number"
     except:
-        pass           
+        pass
+    return "n is a number"
 
 
 if __name__ == "__main__":
