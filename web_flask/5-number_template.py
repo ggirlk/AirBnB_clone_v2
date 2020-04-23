@@ -37,7 +37,7 @@ def nbr(n):
 @app.route('/number/<int:n>', strict_slashes=False)
 def tpl(n):
     if isinstance(n, int):
-        return render_template("templates/5-number.html", n=n)
+        return render_template("5-number.html", n=n)
 
 if __name__ == "__main__":
     app.run()
