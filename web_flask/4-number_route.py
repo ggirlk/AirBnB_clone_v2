@@ -34,7 +34,7 @@ def nbr(n):
         int(n)
     except:
         pass
-    return "n is a number"
+    return "{:d} is a number".format(n)
 
 
 if __name__ == "__main__":
